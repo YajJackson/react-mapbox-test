@@ -16,10 +16,7 @@ enum MAP_STYLE {
 interface props {
     containerStyle?: CSS.Properties
 }
-const styles = {
-    width: '500px',
-    height: '500px',
-}
+
 export const MapBoxComponent: React.FunctionComponent<props> = ({ containerStyle }) => {
     const { lat, lng } = usePosition()
     const [map, setMap] = useState<Map | null>(null)
@@ -45,5 +42,5 @@ export const MapBoxComponent: React.FunctionComponent<props> = ({ containerStyle
         else map.flyTo({ center: { lat, lng }, zoom: 11 })
     }, [map, lat, lng])
 
-    return <div ref={(el) => (mapContainer.current = el)} style={styles} />
+    return <div ref={(el) => (mapContainer.current = el)} style={containerStyle} />
 }
